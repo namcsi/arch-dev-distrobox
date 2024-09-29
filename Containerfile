@@ -69,20 +69,20 @@ RUN pacman -S \
         --noconfirm
 # Install extra packages
 COPY arch-packages /
-RUN grep -v '^#' /arch-packages | xargs pacman -S --noconfirm
+RUN grep -v '^#' /arch-packages | xargs pacman -S --noconfirm && \
     rm /arch-packages
 
 # Add paru and install AUR packages
 USER build
 WORKDIR /home/build
-COPY aur-packages .
+COPY aur-packages /home/build/aur-packages
 RUN git clone https://aur.archlinux.org/paru-bin.git --single-branch && \
     cd paru-bin && \
     makepkg -si --noconfirm && \
     cd .. && \
-    rm -drf paru-bin
-    grep -v '^#' /aur-packages | xargs paru -S --noconfirm
-    rm ./aur-packages
+    rm -drf paru-bin && \
+    grep -v '^#' /home/build/aur-packages | xargs paru -S --noconfirm && \
+    rm /home/build/aur-packages
 USER root
 WORKDIR /
 
