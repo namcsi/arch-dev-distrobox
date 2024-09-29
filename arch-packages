@@ -1,12 +1,11 @@
 aspell
 aspell-en
 aspell-de
-conda
 direnv
 emacs
 ttf-fira-code
 git-lfs
-gnupg2
+gnupg
 ghq
 isync
 openconnect
