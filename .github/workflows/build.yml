@@ -1,7 +1,7 @@
 name: Build Arch-Distrobox
 on:
   schedule:
-    - cron: '20 18 * * *'  # 8:20pm everyday
+    - cron: '0 8 * * 0'  # At 08:00 on Sunday
   pull_request:
     branches:
       - main
