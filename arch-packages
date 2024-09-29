@@ -21,3 +21,4 @@ texlive-bibtexextra
 texlive-mathscience
 biber
 sbcl
+texlab
